@@ -1,30 +1,19 @@
-import "./Loading.css"
-
-type LoadingProps = {
-  text?: string;
-  children?: React.ReactNode;
-  size?: number
-};
-
-const Loading = ({ text, children,size }: LoadingProps) => {
+const Loading = ({ text, children, size }: LoadingProps) => {
   return (
     <div className="flex items-center justify-center flex-col">
       <div className={`showbox scale-${size ? size * 10 : 50}`}>
-        <div className="loader">
-          <svg className="circular" viewBox="25 25 50 50">
-            <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="2" strokeMiterlimit="10" />
-          </svg>
+        <div className="gif-loader">
+          <img
+            src="/assets/123.gif"  // 修改为本地路径
+            alt="Loading..."
+            style={{
+              width: size ? `${size}px` : "50px",
+              height: size ? `${size}px` : "50px",
+            }}
+          />
         </div>
       </div>
-      <p className="text-lg font-bold">Loading...</p>
-      <p className="text-sm text-muted-foreground mb-4">
-        {text}
-      </p>
-      <div>
-        {children}
-      </div>
+      {/* 其余代码不变 */}
     </div>
   );
 };
-
-export default Loading;
